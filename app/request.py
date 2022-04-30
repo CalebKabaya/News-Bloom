@@ -2,6 +2,7 @@ import urllib.request,json
 from .models import Source
 
 
+
 #to get my api key from config
 api_key =None
 #to get my news_url from config
@@ -13,13 +14,12 @@ def config_request(app):
     api_key= app.config['NEWS_API_KEY']
     news_url= app.config['NEWS_API_URL']
 
-
 def get_news():
     '''
     Function that gets the json response to our url request
     '''
     get_news_url= news_url.format(api_key)
-    print(get_news_url)
+    # print(get_news_url)
 
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data= url.read()
@@ -33,7 +33,9 @@ def get_news():
             news_results = process_results(news_results_list)
 
 
-    return news_results
+    # return 
+        print(news_results)
+
 
 def process_results(news_list):
     '''
