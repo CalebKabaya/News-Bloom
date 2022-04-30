@@ -1,5 +1,5 @@
 import urllib.request,json
-from .models import Source
+from .models import Source,Article
 
 
 
@@ -59,4 +59,57 @@ def process_results(news_list):
             news_results.append(source_object)
 
         return news_results
+
+def get_headlines():
+    get_headlines_url='https://newsapi.org/v2/top-headlines?country=us&apiKey={}'.format(api_key)
+    print(get_headlines_url)
+
+    with urllib.request.urlopen(get_headlines_url) as url:
+        get_headlines_data =url.read()
+        get_headlines_response= json.loads(get_headlines_data)
+
+        get_headlines_results=None
+
+        if get_headlines_response['articlesdata']:
+            get_headlines_list= get_headlines_response['articlesdata']
+            get_headlines_results= process_articles_results(get_headlines_list)
+
+    return get_headlines_results
+def article_source(id):
+    article_source_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(id,api_key)
+    print(article_source_url)
+    with urllib.request.urlopen(article_source_url) as url:
+        article_source_data = url.read()
+        article_source_response = json.loads(article_source_data)
+
+        article_source_results = None
+
+        if article_source_response['articles']:
+            article_source_list = article_source_response['articles']
+            article_source_results = process_articles_results(article_source_list)
+
+
+    return article_source_results
+    
+def process_articles_results(news):
+    '''
+    function that processes the json files of articles from the api key
+    '''
+    article_source_results = []
+    for article in news:
+        author = article.get('author')
+        description = article.get('description')
+        time = article.get('publishedAt')
+        url = article.get('urlToImage')
+        image = article.get('url')
+        title = article.get ('title')
+
+        if url:
+            article_objects = Article(author,description,time,image,url,title)
+            article_source_results.append(article_objects)
+
+    return article_source_results
+
+    
+
   
