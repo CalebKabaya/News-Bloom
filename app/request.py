@@ -19,17 +19,17 @@ def get_news():
     Function that gets the json response to our url request
     '''
     get_news_url= news_url.format(api_key)
-    print(get_news_url)
+    # print(get_news_url)
 
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data= url.read()
-        get_news_respose= json.loads(get_news_data)
-        print(get_news_respose)
+        get_news_response= json.loads(get_news_data)
+        # print(get_news_response)
 
         news_results = None
 
-        if get_news_respose['results']:
-            news_results_list = get_news_respose['results']
+        if get_news_response['sources']:
+            news_results_list = get_news_response['sources']
             news_results = process_results(news_results_list)
 
 

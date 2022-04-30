@@ -9,5 +9,5 @@ def index():
     return the render_template which is index.html
     
     """
-    datas= get_news()
-    return render_template('index.html',mydata=datas)
+    source= get_news()
+    return render_template('index.html',sources=source)
