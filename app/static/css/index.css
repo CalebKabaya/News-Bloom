@@ -6,3 +6,12 @@
 .row{
     display: flex;
 }
+#footer-1{
+    background-color:#eff2f2 ;
+}
+#header{
+    background-color: black;
+}
+body{
+    background-color: red;
+}
