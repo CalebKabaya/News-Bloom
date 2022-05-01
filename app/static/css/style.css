@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.row{
+    display: flex;
+}
+#footer-1{
+    background-color:#ddeded ;
+    margin-top: 25px;
+}
+body{
+    background-color: white;
+}
+.up{
+    background-color:#045656 ;
+    font-weight: bolder;
+ 
+}
+
