@@ -11,19 +11,17 @@
     <div class="container-fluid mt-5">
       <div class="row">
         <div class="col-3">
-          <div class="card-column">
-            <div class="card-header">
-              <h4>News Sources</h4>
-            </div>
-            <ul>
-              {% for source in sources %}
+          <div class="card-header">
+            <h4>News Sources</h4>
+          </div>
+          {% for source in sources %}
+          <div class="card-body">
               <a href="/article/{{source.id}}">
                 <p class="text-capitalize text-muted">{{source.id}}</p>
               </a>
-              {% endfor %}
-            </ul>
-
           </div>
+          {% endfor %}
+
         </div>
         <div class="col-9">
           <h3 class="text-center">News Making The Headline Today</h3>

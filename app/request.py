@@ -1,5 +1,5 @@
 import urllib.request,json
-from .models import Source,Article,Headlines
+from .models import Source,Article,Headlines,Topics
 
 
 
@@ -7,12 +7,16 @@ from .models import Source,Article,Headlines
 api_key =None
 #to get my news_url from config
 news_url=None
+#to get my topic_url from config
+topic_url=None
 
 #configure
 def config_request(app):
-    global api_key,news_url
+    global api_key,news_url,topic_url
     api_key= app.config['NEWS_API_KEY']
     news_url= app.config['NEWS_API_URL']
+    topic_url= app.config['TOPIC_API_URL']
+
 
 def get_news():
     '''
@@ -24,7 +28,7 @@ def get_news():
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data= url.read()
         get_news_response= json.loads(get_news_data)
-        print(get_news_response)
+        # print(get_news_response)
 
         news_results = None
 
@@ -77,7 +81,7 @@ def get_headlines():
     return get_headlines_results
 def article_source(id):
     article_source_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(id,api_key)
-    print(article_source_url)
+    # print(article_source_url)
     with urllib.request.urlopen(article_source_url) as url:
         article_source_data = url.read()
         article_source_response = json.loads(article_source_data)
@@ -109,6 +113,24 @@ def process_articles_results(news):
             article_source_results.append(article_objects)
 
     return article_source_results
+
+def get_news_topics(topic_name):
+    '''
+    function that gets the response to the category json
+    '''
+    get_topic_url= topic_url.format(topic_name,api_key)
+    with urllib.request.urlopen(get_topic_url) as url:
+        get_topic_data=url.read()
+        get_topic_response=json.loads(get_topic_data)
+        # print(get_topic_response)
+        get_topic_results=None
+
+        if get_topic_response['articles']:
+            get_topic_list= get_topic_response['articles']
+            get_topic_results= process_articles_results(get_topic_list)
+
+    return get_topic_results        
+
 
     
 

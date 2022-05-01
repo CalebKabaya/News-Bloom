@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% block content%}
+<div class="container mt-5">
+    <h1 class=" text-center text-capitalize"> {{tops}} </h3>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for thetopic in thetopics %}
+            <div class="col">
+              <div class="card h-100">
+                <img src="{{thetopic.image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Author:{{thetopic.author}}</h5>
+                  <p class="card-text">{{thetopic.description}}</p>
+                  <a href="{{thetopic.url}}">
+                    <button type="button" class="btn btn-info">Read More!!!</button>
+                  </a>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Date Posted: {{thetopic.time}}</small>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+
+</div>
+{% endblock %}
