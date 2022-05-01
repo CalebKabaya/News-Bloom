@@ -5,30 +5,29 @@
 <!-- Styles block -->
 
 <!-- block content -->
+
 <body>
   <section>
-    <div class="container mt-5">
+    <div class="container-fluid mt-5">
       <div class="row">
         <div class="col-3">
           <div class="card-column">
             <div class="card-header">
               <h4>News Sources</h4>
             </div>
-            <div class="list-group list-group-flush scrolly">
-              <ul>
-                {% for source in sources %}
-                <a href="/article/{{source.id}}">
-                  <p class="text-capitalize text-muted">{{source.id}}</p>
-                </a>
-                {% endfor %}
-              </ul>
-            </div>
+            <ul>
+              {% for source in sources %}
+              <a href="{{source.url}}">
+                <p class="text-capitalize text-muted">{{source.name}}</p>
+              </a>
+              {% endfor %}
+            </ul>
 
           </div>
         </div>
         <div class="col-9">
           <h1 class="text-center">News Making The Headline Today</h1>
-          <div class="container">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
             <!-- <div class="card-colums">
               {% for article in articles %}
               <div class="card">
@@ -43,26 +42,25 @@
                 <small class="text-muted">Publish date:{{article.time}}</small>
               </div>
               {% endfor %} -->
-              {% for article in articles %}
-
-              <div class="card-group">
-
-                <div class="card">
-                  <img src="{{article.image}}" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Author:{{article.author}}</h5>
-                    <p class="card-text">{{article.description}}</p>
-                    <a href="{{article.url}}">
-                      <button type="button" class="btn btn-info">Read More!!!</button>
-                    </a>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted">{{article.time}}</small>
-                  </div>
+            {% for article in articles %}
+            <div class="col">
+              <div class="card">
+                <img src="{{article.image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Author:{{article.author}}</h5>
+                  <p class="card-text">{{article.description}}</p>
+                  <a href="{{article.url}}">
+                    <button type="button" class="btn btn-info">Read More!!!</button>
+                  </a>
                 </div>
-                {% endfor %}
+                <div class="card-footer">
+                  <small class="text-muted">Date Posted: {{article.time}}</small>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
 
-              <!-- {% for article in articles %}
+            <!-- {% for article in articles %}
 
               <img src="{{article.image}}" alt="">
               <span>{{article.author}} </span>
@@ -72,12 +70,13 @@
 
               {% endfor %} -->
 
-            </div>
-
           </div>
+
         </div>
 
       </div>
+
+    </div>
     </div>
   </section>
 </body>

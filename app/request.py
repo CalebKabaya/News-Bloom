@@ -24,7 +24,7 @@ def get_news():
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data= url.read()
         get_news_response= json.loads(get_news_data)
-        # print(get_news_response)
+        print(get_news_response)
 
         news_results = None
 
