@@ -28,6 +28,28 @@
 
           </div>
         </div>
+        <div class="col-9">
+          <h1 class="text-center">News Making The Heaadline Today</h1>
+          <div class="container">
+            <div class="card-colums">
+              {% for headline in headlines %}
+              <div class="card">
+                <img src="{{headline.image}}" alt="">
+                <h4 class="card-title">{{headlines.author}}</h4>
+                <p class="card-text">{{headlines.description}}</p>
+                <a href="{{headlines.url}}">
+                  <p class="card-text">Read More!!</p>
+                </a>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Publish date:{{headlines.time}}</small>
+              </div>
+              {% endfor %}
+
+            </div>
+
+          </div>
+        </div>
 
       </div>
     </div>
