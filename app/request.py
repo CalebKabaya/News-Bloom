@@ -1,5 +1,5 @@
 import urllib.request,json
-from .models import Source,Article
+from .models import Source,Article,Headlines
 
 
 
@@ -67,11 +67,11 @@ def get_headlines():
     with urllib.request.urlopen(get_headlines_url) as url:
         get_headlines_data =url.read()
         get_headlines_response= json.loads(get_headlines_data)
-
+        # print(get_headlines_response)
         get_headlines_results=None
 
-        if get_headlines_response['articlesdata']:
-            get_headlines_list= get_headlines_response['articlesdata']
+        if get_headlines_response['articles']:
+            get_headlines_list= get_headlines_response['articles']
             get_headlines_results= process_articles_results(get_headlines_list)
 
     return get_headlines_results
@@ -90,7 +90,7 @@ def article_source(id):
 
 
     return article_source_results
-    
+
 def process_articles_results(news):
     '''
     function that processes the json files of articles from the api key
