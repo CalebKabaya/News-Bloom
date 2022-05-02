@@ -4,14 +4,14 @@ class Source:
     '''
 
     def __init__(self,id,name,description,url):
-        self.id=id
-        self.name=name
-        self.description=description
-        self.url=url
+        self.id = id
+        self.name = name
+        self.description = description
+        self.url = url
 
 class Headlines:
     '''
-    Class for headlines categories o
+    Class for headlines categories 
     '''
     def __init__(self,author,description,time,url,image,title):
         self.author = author

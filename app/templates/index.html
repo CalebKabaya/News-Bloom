@@ -13,13 +13,16 @@
           <div class="card-header" id="header">
             <h4>News Sources</h4>
           </div>
-          {% for source in sources %}
+
           <div class="card-body">
+            {% for source in sources %}
+
               <a href="/article/{{source.id}}">
-                <p class="text-capitalize text-muted">{{source.id}}</p>
+                <p class="text-capitalize text-muted">{{source.name}}</p>
               </a>
+              {% endfor %}
+
           </div>
-          {% endfor %}
           
         </div>
         <div class="col-9">
